@@ -14,15 +14,15 @@ app.post("/events", (req, res) => {
   axios
     .post("http://posts-clusterip-srv:4000/events", event)
     .catch((err) => console.log(err));
-  // axios
-  //   .post("http://localhost:4001/events", event)
-  //   .catch((err) => console.log(err));
-  // axios
-  //   .post("http://localhost:4002/events", event)
-  //   .catch((err) => console.log(err));
-  // axios
-  //   .post("http://localhost:4003/events", event)
-  //   .catch((err) => console.log(err));
+  axios
+    .post("http://comments-serv:4001/events", event)
+    .catch((err) => console.log(err));
+  axios
+    .post("http://query-serv:4002/events", event)
+    .catch((err) => console.log(err));
+  axios
+    .post("http://moderation-serv:4003/events", event)
+    .catch((err) => console.log(err));
 
   res.send({ status: "OK" });
 });

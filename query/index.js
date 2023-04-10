@@ -1,5 +1,5 @@
 const express = require("express");
-import { axios } from "axios";
+const axios = require("axios");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
@@ -49,11 +49,13 @@ app.listen(4002, async () => {
   console.log("listening on port 4002");
 
   const res = await axios
-    .get("http://localhost4005/events")
+    .get("http://event-bus-serv:4005/events")
     .catch((err) => console.log(err));
 
   for (let event of res.data) {
-    console.log("Processing event: ".event.type);
-    handleEvent(event.type, event.data);
+    if (event) {
+      console.log("Processing event of type: ", event.type);
+      handleEvent(event.type, event.data);
+    }
   }
 });
