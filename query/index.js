@@ -48,14 +48,14 @@ app.post("/events", (req, res) => {
 app.listen(4002, async () => {
   console.log("listening on port 4002");
 
-  const res = await axios
-    .get("http://event-bus-serv:4005/events")
-    .catch((err) => console.log(err));
+  // const res = await axios
+  //   .get("http://event-bus-serv:4005/events")
+  //   .catch((err) => console.log(err));
 
-  for (let event of res.data) {
-    if (event) {
-      console.log("Processing event of type: ", event.type);
-      handleEvent(event.type, event.data);
-    }
-  }
+  // for (let event of res.data) {
+  //   if (event) {
+  //     console.log("Processing event of type: ", event.type);
+  //     handleEvent(event.type, event.data);
+  //   }
+  // }
 });
